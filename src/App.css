@@ -1,38 +1,45 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-border {
+    border: 2px solid transparent; /* Set a transparent border */
+    background-clip: padding-box; /* Clip the background to the padding-box */
+    border-image: linear-gradient(to right, white, black); /* Set the gradient for the border */
+    border-image-slice: 1; /* Ensure the entire border is covered by the gradient */
+}
+.main-box-container {
+  height: 400px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f0f0f0, #dcdcdc);
+  animation: waveAnimation 5s infinite linear alternate;
 }
 
-.App-logo {
-  height: 40vmin;
+.wave-background {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes waveAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+/* Add the rest of your styling as needed */
+.lines-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: repeating-linear-gradient(to top right, transparent, transparent 5px, gray 5px, gray 10px);
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
