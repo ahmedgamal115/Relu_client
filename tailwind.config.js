@@ -7,9 +7,7 @@ module.exports = {
     'src/Compnents/DisplayProducts.jsx',
     'src/Compnents/Footer.jsx',
     'src/Compnents/ProductsDetails.jsx',
-
-    
-
+    'src/Compnents/CustomDetails.jsx',
   ],
   theme: {
     extend: {},
