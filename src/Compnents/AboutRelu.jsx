@@ -17,10 +17,10 @@ export default function AboutRelu() {
           <div className="bg-gray-100 opacity-90 rounded p-4">
             <p className="mb-2 text-gray-700">Follow us on:</p>
             <div className="flex justify-center space-x-4">
-              <a href="#" className="text-blue-500 hover:underline">
+              <a href="#/" className="text-blue-500 hover:underline">
                 <FaTiktok className="text-gray-500 w-12 h-12" /> 
               </a>
-              <a href="#" className="text-purple-500 hover:underline">
+              <a href="#/" className="text-purple-500 hover:underline">
                 <FaInstagram className="text-gray-500 w-12 h-12" /> 
               </a>
             </div>
