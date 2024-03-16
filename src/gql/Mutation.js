@@ -32,33 +32,35 @@ mutation Mutation($username: String!, $phone: String!, $address: String!, $amoun
 }
 `
 const MakeCustomOrder = gql`
-mutation Mutation($username: String!, $phone: String!, $address: String!, $amount: [Float!]!, $otherPhone: String, $discountCode: ID, $customeImage: Upload, $customWidth: Float, $customHeight: Float) {
-  makeOrder(username: $username, phone: $phone, address: $address, amount: $amount, otherPhone: $otherPhone, discountCode: $discountCode, customeImage: $customeImage, customWidth: $customWidth, customHeight: $customHeight) {
+mutation Mutation($username: String!, $phone: String!, $address: String!, $amount: [Float!]!, $otherPhone: String, $discountCode: ID, $customeImage: Upload, $customWidth: Float, $customHeight: Float, $customPrice: Float, $comment: String) {
+  makeOrder(username: $username, phone: $phone, address: $address, amount: $amount, otherPhone: $otherPhone, discountCode: $discountCode, customeImage: $customeImage, customWidth: $customWidth, customHeight: $customHeight, customPrice: $customPrice, comment: $comment) {
     id
     username
     phone
     otherPhone
     address
     amount
-    customHeight
-    customWidth
+    comment
     customeImage
+    customWidth
+    customPrice
+    customHeight
+    delivered
+    discountCode {
+      code
+      discount
+      expire
+    }
     productOrder {
       id
       image
       price
       productSize {
         id
-        height
         width
+        height
       }
     }
-    discountCode {
-      code
-      discount
-      expired
-    }
-    delivered
   }
 }
 `

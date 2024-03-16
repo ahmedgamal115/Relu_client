@@ -16,6 +16,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
     const [promoCodeId , setPromoCodeId ] = useState(null)
     const [promoCodeDiscount , setPromoCodeDiscount ] = useState(null)
     const [activeErrorMsg,setActiveErrorMsg] = useState(false)
+    const [imageIndex,setImageIndex] = useState(0)
 
 
     const promoData = useQuery(CheckPromoCode,
@@ -63,7 +64,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
         <div className="bg-gray-100">
             <div className="pt-6">
                 {/* Main content grid */}
-                <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+                <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
                     {/* Image (for small screens) */}
                     <div className="lg:hidden p-5">
                         {
@@ -74,12 +75,35 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                         }
                         {
                             data &&
-                                <div className="aspect-h-4 aspect-w-3 overflow-hidden rounded-lg">
+                                <div className="aspect-h-4 aspect-w-3 p-3 overflow-hidden rounded-lg">
                                     <img
-                                        src={data.image[0]}
+                                        src={data.image[imageIndex]}
                                         alt='Product wanted'
-                                        className="w-full object-cover object-center"
+                                        className="h-[300px] w-[400px] object-cover rounded-xl
+                                        shadow-cardShadow mb-8 bg-transparent"
                                     />
+                                    {
+                                        data.image[1] &&
+                                        <div className="flex justify-start items-center gap-3">
+                                        {
+                                            data.image.map((imge,idx)=>(
+                                                <img 
+                                                src={imge} 
+                                                alt='Product wanted'
+                                                className={`h-[100px] w-[100px] object-cover rounded-xl 
+                                                object-center shadow-cardShadow cursor-pointer
+                                                ${idx === imageIndex ? "border-[4px] border-gray-500 border-dashed": "border-none"}`}
+                                                onClick={()=>{
+                                                    // imageIndex === 0 ?
+                                                    //     setImageIndex(1)
+                                                    // :
+                                                    //     setImageIndex(0)
+                                                    setImageIndex(idx)
+                                                }} />
+                                            ))
+                                        }
+                                        </div>
+                                    }
                                 </div>
                         }
                     </div>
@@ -120,10 +144,6 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                         <form className="mt-4" onSubmit={(e)=>{
                             handleSubmitData(e)
                         }}>
-                            {
-                                activeErrorMsg && 
-                                    <Alert severity="error"> Promo code expired</Alert>
-                            }
                             {/* Order details fields */}
                             <div className="grid grid-cols-1 gap-4 mt-4">
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -168,7 +188,6 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                 title="Please enter a valid 11-digit Egyptian phone number"
                                 className="border p-2 rounded-md w-full"
                                 placeholder="Your Phone Number"
-                                required
                                 onChange={(e)=>{
                                     setValues({...values,[e.target.name]:e.target.value})
                                 }}
@@ -239,7 +258,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                 id="address"
                                 name="address"
                                 rows="3"
-                                className="border p-2 rounded-md w-full"
+                                className="border p-2 rounded-md w-full mb-4"
                                 placeholder="Your Address"
                                 required
                                 onChange={(e)=>{
@@ -247,7 +266,10 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                 }}
                             ></textarea>
                             </div>
-
+                            {
+                                activeErrorMsg && 
+                                    <Alert severity="error"> Promo code expired</Alert>
+                            }
                             {/* Submit order button */}
                             <button
                                 type="submit"
@@ -259,7 +281,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                     </div>
 
                     {/* Image (for large screens) */}
-                    <div className="hidden lg:block lg:col-span-1 lg:border-r lg:border-gray-200 lg:pr-8">
+                    <div className="hidden lg:block lg:col-span-1 lg:border-r lg:border-gray-200  lg:w-full">
                         {
                             loading && <p>Loading...</p>
                         }
@@ -268,12 +290,35 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                         }
                         {
                             data &&
-                                <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
+                                <div className="aspect-h-4 p-3 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
                                     <img
-                                        src={data.image[0]}
+                                        src={data.image[imageIndex]}
                                         alt='Product wanted'
-                                        className="h-[500px] w-full object-cover object-center"
+                                        className="h-[500px] w-[400px] object-cover rounded-xl
+                                        shadow-cardShadow mb-8 bg-transparent"
                                     />
+                                    {
+                                        data.image[1] &&
+                                        <div className="flex justify-start items-center gap-3">
+                                        {
+                                            data.image.map((imge,idx)=>(
+                                                <img 
+                                                src={imge} 
+                                                alt='Product wanted'
+                                                className={`h-[150px] w-[150px] object-cover rounded-xl 
+                                                object-center shadow-cardShadow cursor-pointer
+                                                ${idx === imageIndex ? "border-[4px] border-gray-500 border-dashed": "border-none"}`}
+                                                onClick={()=>{
+                                                    // imageIndex === 0 ?
+                                                    //     setImageIndex(1)
+                                                    // :
+                                                    //     setImageIndex(0)
+                                                    setImageIndex(idx)
+                                                }} />
+                                            ))
+                                        }
+                                        </div>
+                                    }
                                 </div>
                         }
                     </div>

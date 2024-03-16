@@ -10,7 +10,14 @@ module.exports = {
     'src/Compnents/CustomDetails.jsx',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor:{
+        'layout': 'rgb(0 0 0 / 53%)',
+      },
+      boxShadow:{
+        'cardShadow': `-1px 3px 13px 2px rgba(0,0,0,0.75)`
+      }
+    },
   },
   plugins: [],
 }
