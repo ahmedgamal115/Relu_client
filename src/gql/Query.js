@@ -60,6 +60,7 @@ query Query($code: String!) {
     expire
     expired
     discount
+    amount
   }
 }
 `

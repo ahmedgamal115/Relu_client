@@ -11,6 +11,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors:{
+        "primary": "#D9D9D9",
+        "whiteSec": "#ffffff",
+        "blackSec": "#000000",
+      },
       backgroundColor:{
         'layout': 'rgb(0 0 0 / 53%)',
       },

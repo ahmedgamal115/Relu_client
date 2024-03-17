@@ -18,7 +18,7 @@ export default function CustomDetails() {
   const [promoCode , setPromoCode ] = useState(null)
   const [promoCodeId , setPromoCodeId ] = useState(null)
   const [activeErrorMsg,setActiveErrorMsg] = useState(false)
-  const cantiPrice = 0.5
+  const cantiPrice = 0.1
 
   const promoData = useQuery(CheckPromoCode,
     {variables:{code:promoCode}})
@@ -44,7 +44,11 @@ export default function CustomDetails() {
     if(promoData.data){
         setPromoCodeIsExpired(promoData.data.checkPromocode.expired)
         setPromoCodeId(promoData.data.checkPromocode.id)
-        setPromoCodeDiscount(promoData.data.checkPromocode.discount)
+        if(promoData.data.checkPromocode.discount){
+          setPromoCodeDiscount(promoData.data.checkPromocode.discount)
+        }else{
+          setPromoCodeDiscount(promoData.data.checkPromocode.amount)
+        }
     }else{
       setPromoCodeDiscount(null)
     }
@@ -73,7 +77,7 @@ export default function CustomDetails() {
       "customWidth": values.customWidth,
       "customHeight": values.customHeight,
       "comment": values.comment,
-      "customPrice": customPrice - (customPrice * (parseFloat(promoCodeDiscount)/100))
+      "customPrice":  promoData.data && promoData.data.checkPromocode.discount ? customPrice - (customPrice * (parseFloat(promoCodeDiscount)/100)) : customPrice - promoCodeDiscount
     }
     makeCustomOrder({variables: orderData})
   }
@@ -377,7 +381,10 @@ export default function CustomDetails() {
         }
         {
           promoCodeDiscount && customPrice ?
+            promoData.data && promoData.data.checkPromocode.discount ?
               <p className="tracking-tight font-bold text-gray-900">{customPrice - (customPrice * (parseFloat(promoCodeDiscount)/100))} EGP</p>
+            :
+              <p className="tracking-tight font-bold text-gray-900">{customPrice - promoCodeDiscount} EGP</p>
           :<></>
         }
         <button

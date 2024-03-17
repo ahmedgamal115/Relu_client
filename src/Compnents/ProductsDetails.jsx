@@ -32,7 +32,13 @@ const ProductDetails = ({ loading, error, data, productId }) => {
         if(promoData.data){
             setPromoCodeIsExpired(promoData.data.checkPromocode.expired)
             setPromoCodeId(promoData.data.checkPromocode.id)
-            setPromoCodeDiscount(promoData.data.checkPromocode.discount)
+            if(promoData.data.checkPromocode.discount){
+                setPromoCodeDiscount(promoData.data.checkPromocode.discount)
+            }else{
+                setPromoCodeDiscount(promoData.data.checkPromocode.amount)
+            }
+        }else{
+            setPromoCodeDiscount(null)
         }
     },[promoData.data])
     useEffect(()=>{
@@ -92,7 +98,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                                 alt='Product wanted'
                                                 className={`h-[100px] w-[100px] object-cover rounded-xl 
                                                 object-center shadow-cardShadow cursor-pointer
-                                                ${idx === imageIndex ? "border-[4px] border-gray-500 border-dashed": "border-none"}`}
+                                                ${idx === imageIndex ? "border-2 border-primary border-solid": "border-none"}`}
                                                 onClick={()=>{
                                                     // imageIndex === 0 ?
                                                     //     setImageIndex(1)
@@ -135,7 +141,10 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                             }
                             {
                                 promoCodeDiscount ?
-                                    <p className="text-xl tracking-tight text-gray-900">{parseFloat(data.price) - (parseFloat(data.price) * (parseFloat(promoCodeDiscount)/100))} EGP</p>
+                                    promoData.data && promoData.data.checkPromocode.discount ?
+                                        <p className="text-xl tracking-tight text-gray-900">{parseFloat(data.price) - (parseFloat(data.price) * (parseFloat(promoCodeDiscount)/100))} EGP</p>
+                                    :
+                                        <p className="text-xl tracking-tight text-gray-900">{parseFloat(data.price) - parseFloat(promoCodeDiscount)} EGP</p>
                                 :<></>
                             }
                         </div>
@@ -307,7 +316,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                                 alt='Product wanted'
                                                 className={`h-[150px] w-[150px] object-cover rounded-xl 
                                                 object-center shadow-cardShadow cursor-pointer
-                                                ${idx === imageIndex ? "border-[4px] border-gray-500 border-dashed": "border-none"}`}
+                                                ${idx === imageIndex ? "border-2 border-primary border-solid": "border-none"}`}
                                                 onClick={()=>{
                                                     // imageIndex === 0 ?
                                                     //     setImageIndex(1)
