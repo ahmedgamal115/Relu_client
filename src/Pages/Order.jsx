@@ -4,8 +4,12 @@ import Navbar from "../Compnents/Navbar";
 import ProductsDetails from "../Compnents/ProductsDetails";
 import { useQuery } from "@apollo/client";
 import { GetProductsById } from "../gql/Query";
+import { useEffect } from "react";
 
 function Order() {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const params = useParams()
   const { loading, error, data } = useQuery(GetProductsById,{
     variables: {
