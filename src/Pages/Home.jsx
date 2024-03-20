@@ -6,8 +6,12 @@ import MainBox from '../Compnents/MainBox';
 import Navbar from '../Compnents/Navbar';
 import { useQuery } from '@apollo/client';
 import { GetProducts } from '../gql/Query';
+import { useEffect } from 'react';
 
 function Home() {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const { loading, error, data } = useQuery(GetProducts)
   return (
     <div>
