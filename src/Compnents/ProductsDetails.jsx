@@ -67,7 +67,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
         makeStanderOrder({variables: orderData})
     }
     return (
-        <div className="bg-gray-100">
+        <div>
             <div className="pt-6">
                 {/* Main content grid */}
                 <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -123,8 +123,9 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                             error && <p>Error! {console.log(error)}</p>
                         }
                         {
-                            data &&
-                                <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{data.productSize.width} X {data.productSize.height} CM</h1>
+                            data 
+                            &&
+                            <h1 className="text-2xl  tracking-tight text-black sm:text-2xl barbra">{data.productSize.width} * {data.productSize.height} CM</h1>
 
                         }
                         {/* Price section */}
@@ -137,7 +138,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                             }
                             {
                                 data &&
-                                    <p className={`text-xl tracking-tight text-gray-900 ${promoCodeDiscount? 'line-through' : 'no-underline'} `}>{data.price} EGP</p>
+                                    <p className={`text-xl tracking-tight text-black cosmic ${promoCodeDiscount? 'line-through' : 'no-underline'} `}>{data.price} EGP</p>
                             }
                             {
                                 promoCodeDiscount ?
@@ -154,8 +155,8 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                             handleSubmitData(e)
                         }}>
                             {/* Order details fields */}
-                            <div className="grid grid-cols-1 gap-4 mt-4">
-                            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                            <div className="grid grid-cols-1  gap-4 mt-4">
+                            <label htmlFor="name" className="block text-sm text-black barbra">
                                 Fullname
                             </label>
                             <input
@@ -170,7 +171,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                 }}
                             />
 
-                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="phone" className="block text-sm text-black barbra">
                                 Phone
                             </label>
                             <input
@@ -186,7 +187,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                     setValues({...values,[e.target.name]:e.target.value})
                                 }}
                             />
-                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="phone" className="block text-sm text-black barbra">
                                 Another phone
                             </label>
                             <input
@@ -201,7 +202,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                     setValues({...values,[e.target.name]:e.target.value})
                                 }}
                             />
-                            <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="amount" className="block text-sm text-black barbra">
                                 Amount
                             </label>
                             <input
@@ -215,7 +216,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                     setValues({...values,[e.target.name]:[parseFloat(e.target.value)]})
                                 }}
                             />
-                            <label htmlFor="promo-code" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="promo-code" className="block text-sm text-black barbra">
                                 Apply promo-code
                             </label>
                             <div className="mt-2">
@@ -234,7 +235,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                     }}
                                     className="form-radio h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
                                 />
-                                <span className="ml-2 text-sm text-gray-900">Redeem</span>
+                                <span className="ml-2 text-black barbra">Redeem</span>
                             </div>
                             {promo ? (
                                 <div >
@@ -260,7 +261,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                     }
                                 </div>
                             ):''}
-                            <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="address" className="block text-sm text-black barbra">
                                 Address
                             </label>
                             <textarea
@@ -282,7 +283,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                             {/* Submit order button */}
                             <button
                                 type="submit"
-                                className="mt-4 flex w-full items-center justify-center rounded-md border border-transparent bg-gray-600 px-8 py-3 text-base font-medium text-white hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                className="mt-4 flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 barbra"
                             >
                                 Place Order
                             </button>
@@ -332,10 +333,6 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                         }
                     </div>
 
-                    {/* Description and details */}
-                    <div className="py-6 lg:col-span-3 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6 p-5 lg:p-0">
-                        
-                    </div>
                 </div>
             </div>
         </div>

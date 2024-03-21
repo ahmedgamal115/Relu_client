@@ -13,12 +13,12 @@ export default function Navbar() {
           </Link>
           <Link to='/customOrder'>
             <div className='flex items-center justify-center p-1'>
-              <p className='hidden lg:flex text-gray-800  italic font-bold  text-lg'>Create your own design </p>
+              <p className='hidden lg:flex text-black   romanesco-regular font-bold  text-lg'>Create your own design </p>
               <img src={Custom} alt='' className='flex lg:hidden w-12 h-12'></img>
             </div>
           </Link>
           <div className=' items-center justify-center p-1'>
-            <p className='text-gray-800 romanesco-regular'>your Art , our Frame </p>
+            <p className='text-black font-semibold romanesco-regular'>your Art , our Frame </p>
           </div>
         </div>
       </div>

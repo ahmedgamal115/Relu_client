@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function DisplayProducts({ loading, error, data }) {
   
   return (
-    <div className="bg-gray-100">
+    <div>
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
 
@@ -26,8 +26,8 @@ export default function DisplayProducts({ loading, error, data }) {
                           scale-150 group-hover:scale-100 hover:shadow-lg"
                         />
                       </div>
-                      <h3 className="mt-4 text-sm text-gray-800">{product.productSize.width} X {product.productSize.height} CM</h3>
-                      <p className="mt-1 text-lg font-medium text-gray-700">{product.price} EGP</p>
+                      <h3 className="mt-4 text-medium text-black barbra">{product.productSize.width} * {product.productSize.height} CM</h3>
+                      <p className="mt-1 text-lg font-sm text-black cosmic">{product.price} EGP</p>
                     </Link>
                   
                   :''
