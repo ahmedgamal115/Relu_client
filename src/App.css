@@ -1,18 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.cdnfonts.com/css/cosmic');
+
 @import url('https://fonts.cdnfonts.com/css/barbara');
 .font-quicksand {
   font-family: 'Quicksand', sans-serif;
 }
-.content{
+.cosmic {
+  font-family: 'Cosmic', sans-serif;
+}
+.barbra{
   font-family: 'Barbara', sans-serif;
-                                                
 }
 .romanesco-regular {
   font-family: "Romanesco", cursive;
-  font-weight: 400;
-  font-style: normal;
 }
 .custom-border {
     border: 2px solid transparent; /* Set a transparent border */

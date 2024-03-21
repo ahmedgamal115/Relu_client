@@ -103,10 +103,10 @@ export default function CustomDetails() {
         activeErrorMsg && 
             <Alert severity="error"> Promo code expired</Alert>
       }
-      <div className="space-y-12">
+      <div className="space-y-12 barbra">
         <div className="border-b border-gray-900/10 pb-12 p-5">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">Create your own design</h2>
-          <p className="mt-1 text-sm leading-6 text-red-900 py-5">
+          <h2 className="leading-7 text-black barbra">Create your own design</h2>
+          <p className="mt-1 text-sm leading-6 text-red-900 py-5 romanesco-regular">
             Choose an image to be your frame with your custom height and width
           </p>
 
@@ -124,7 +124,7 @@ export default function CustomDetails() {
                         className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                       >
                         <span>Upload a file</span>
-                        <input id="file-upload" name="customeImage" type="file" className="sr-only" 
+                        <input id="file-upload" name="customeImage" type="file" className="sr-only " 
                         accept=".png, .jpg, .jpeg" onChange={handleFiles}/>
                       </label>
                       {
@@ -162,7 +162,7 @@ export default function CustomDetails() {
                   name="customWidth"
                   id="width"
                   placeholder='Width in CM'
-                  className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 
+                  className="font-quicksand block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 
                   shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
                   focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   onChange={(e)=>{
@@ -186,7 +186,7 @@ export default function CustomDetails() {
                   name="customHeight"
                   id="height"
                   placeholder='Height in CM'
-                  className="block p-2 w-full rounded-md border-0 py-1.5 text-gray-900 
+                  className="font-quicksand block p-2 w-full rounded-md border-0 py-1.5 text-gray-900 
                   shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
                   focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   onChange={(e)=>{
@@ -210,7 +210,7 @@ export default function CustomDetails() {
                   id="full-name"
                   autoComplete="given-name"
                   placeholder='Your full name please'
-                  className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 
+                  className="font-quicksand block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 
                   shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
                   focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   onChange={(e)=>{
@@ -231,7 +231,7 @@ export default function CustomDetails() {
                 name="phone"
                 pattern="[0-9]{11}"
                 title="Please enter a valid 11-digit Egyptian phone number"
-                className="border p-2 rounded-md w-full"
+                className="font-quicksand border p-2 rounded-md w-full"
                 placeholder="Your Phone Number"
                 required
                 onChange={(e)=>{
@@ -251,7 +251,7 @@ export default function CustomDetails() {
                   name="otherPhone"
                   pattern="[0-9]{11}"
                   title="Please enter a valid 11-digit Egyptian phone number"
-                  className="border p-2 rounded-md w-full"
+                  className="font-quicksand border p-2 rounded-md w-full"
                   placeholder="Your Phone Number"
                   onChange={(e)=>{
                     setValues({...values,[e.target.name]: e.target.value})
@@ -268,7 +268,7 @@ export default function CustomDetails() {
                   type="number"
                   id="amount"
                   name="amount"
-                  className="border p-2 rounded-md w-full"
+                  className="font-quicksand border p-2 rounded-md w-full"
                   placeholder="How much needed"
                   defaultValue={1}
                   onChange={(e)=>{
@@ -329,13 +329,13 @@ export default function CustomDetails() {
                 Street address
               </label>
               <div className="mt-2">
-                <input
+                <textarea
                   type="text"
                   name="address"
                   id="street-address"
                   autoComplete="street-address"
-                  placeholder='Available at cairo for now'
-                  className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 
+                  placeholder=' Full Address please'
+                  className="font-quicksand block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 
                   shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
                   focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   onChange={(e)=>{
@@ -389,9 +389,9 @@ export default function CustomDetails() {
         }
         <button
           type="submit"
-          className="rounded-md bg-gray-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="mt-4 flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 barbra"
         >
-          Submit the order
+          Place Order
         </button>
       </div>
     </form>
