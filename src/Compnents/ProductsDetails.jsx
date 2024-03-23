@@ -76,7 +76,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
         <div>
             <div className="pt-6">
                 {/* Main content grid */}
-                <div className="relative mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+                <div className="relative mx-auto max-w-2xl sm:px-6 lg:mb-8 lg:grid lg:max-w-7xl lg:grid-cols-5 lg:gap-x-8 lg:px-8">
                     {/* Image (for small screens) */}
                     <div className="lg:hidden p-5">
                         {
@@ -92,7 +92,11 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                         src={data.image[imageIndex]}
                                         alt='Product wanted'
                                         className="h-[300px] w-[400px] object-cover rounded-xl
-                                        shadow-cardShadow mb-8 bg-transparent"
+                                        shadow-cardShadow mb-8 bg-transparent cursor-pointer"
+                                        onClick={()=>{
+                                            setFullSizeImage(true)
+                                            setFullSizeImageUrl(data.image[imageIndex])
+                                        }}
                                     />
                                     {
                                         data.image[1] &&
@@ -121,7 +125,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                     </div>
 
                     {/* Price and Add to Bag section */}
-                    <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8 p-5 lg:p-0">
+                    <div className="lg:col-span-3 lg:border-r lg:border-gray-200 lg:pr-8 p-5 lg:p-0">
                         {
                             loading && <p>Loading...</p>
                         }
@@ -156,6 +160,8 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                             }
                         </div>
 
+
+                            
                         {/* Add to Bag form */}
                         <form className="mt-4" onSubmit={(e)=>{
                             handleSubmitData(e)
@@ -297,7 +303,8 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                     </div>
 
                     {/* Image (for large screens) */}
-                    <div className="hidden lg:block lg:col-span-1 lg:border-r lg:border-gray-200  lg:w-full">
+                    <div className="hidden lg:block lg:col-span-2 lg:border-r lg:border-gray-200  lg:w-full">
+
                         {
                             loading && <p>Loading...</p>
                         }

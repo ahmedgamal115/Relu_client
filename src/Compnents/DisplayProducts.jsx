@@ -8,7 +8,7 @@ export default function DisplayProducts({ loading, error, data }) {
         <h2 className="sr-only">Products</h2>
 
           <div className="w-full grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {loading && <p>Loading...</p>}
+          {loading && <p className={`h-[430px]`}>Loading...</p>}
           {error && <p>Error{console.error(error)}</p>}
           {
             data &&

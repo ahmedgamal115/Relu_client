@@ -22,7 +22,7 @@ function Home() {
       setShowAlerte(true)
       setTimeout(() => {
         setShowAlerte(false)
-      }, 3000)
+      }, 10000)
     }else{
       setShowAlerte(false)
     }
