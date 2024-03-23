@@ -24,7 +24,9 @@ const ProductDetails = ({ loading, error, data, productId }) => {
     
     const [makeStanderOrder] = useMutation(MakeStanderOrder,{
         onCompleted:()=>{
-            navigate('/',{state:{ msg: "Order done" }})
+            navigate('/',{
+                state: { msg: "تم استلام الطلب وسوف يتم التواصل معك في اقرب وقت" }
+            })
         }
     })
 

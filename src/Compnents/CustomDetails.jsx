@@ -26,7 +26,7 @@ export default function CustomDetails() {
   const [makeCustomOrder,{loading}] = useMutation(MakeCustomOrder,{
     onCompleted:()=>{
       navigate('/',{
-        state: { msg: "Order Done" }
+        state: { msg: "تم استلام الطلب وسوف يتم التواصل معك في اقرب وقت" }
       })
     }
   })
