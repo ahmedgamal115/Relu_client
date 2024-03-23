@@ -4,6 +4,8 @@ import { CheckPromoCode } from "../gql/Query";
 import { Alert } from "@mui/material";
 import { MakeStanderOrder } from "../gql/Mutation";
 import { useNavigate } from "react-router-dom";
+import { XCircleIcon } from "@heroicons/react/24/solid";
+
 
 
 const ProductDetails = ({ loading, error, data, productId }) => {
@@ -17,6 +19,8 @@ const ProductDetails = ({ loading, error, data, productId }) => {
     const [promoCodeDiscount , setPromoCodeDiscount ] = useState(null)
     const [activeErrorMsg,setActiveErrorMsg] = useState(false)
     const [imageIndex,setImageIndex] = useState(0)
+    const [fullSizeImage,setFullSizeImage] = useState(false)
+    const [fullSizeImageUrl,setFullSizeImageUrl] = useState(null)
 
 
     const promoData = useQuery(CheckPromoCode,
@@ -72,7 +76,7 @@ const ProductDetails = ({ loading, error, data, productId }) => {
         <div>
             <div className="pt-6">
                 {/* Main content grid */}
-                <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+                <div className="relative mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
                     {/* Image (for small screens) */}
                     <div className="lg:hidden p-5">
                         {
@@ -307,7 +311,11 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                         src={data.image[imageIndex]}
                                         alt='Product wanted'
                                         className="h-[500px] w-[400px] object-cover rounded-xl
-                                        shadow-cardShadow mb-8 bg-transparent"
+                                        shadow-cardShadow mb-8 bg-transparent cursor-pointer"
+                                        onClick={()=>{
+                                            setFullSizeImage(true)
+                                            setFullSizeImageUrl(data.image[imageIndex])
+                                        }}
                                     />
                                     {
                                         data.image[1] &&
@@ -334,6 +342,24 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                                 </div>
                         }
                     </div>
+                    {
+                        fullSizeImage ? 
+                            <div className="fixed top-0 left-0 w-full h-screen bg-layout">
+                                <div className="fixed top-0 right-0 w-[50px] h-[50px] bg-black rounded-full">
+                                    <XCircleIcon className="text-lg text-white cursor-pointer"
+                                    onClick={()=>{setFullSizeImage(false)}}/>
+                                </div>
+                                <div className="absolute top-[50%] left-[50%]
+                                translate-x-[-50%] translate-y-[-50%]
+                                w-[80%] h-[80%] overflow-hidden rounded-xl z-50">
+                                    <img 
+                                    src={fullSizeImageUrl} 
+                                    alt="full size" 
+                                    className="object-contain"/>
+                                </div>
+                            </div> 
+                        :""
+                    }
 
                 </div>
             </div>
