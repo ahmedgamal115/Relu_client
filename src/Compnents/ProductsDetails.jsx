@@ -352,13 +352,13 @@ const ProductDetails = ({ loading, error, data, productId }) => {
                     {
                         fullSizeImage ? 
                             <div className="fixed top-0 left-0 w-full h-screen bg-layout">
-                                <div className="fixed top-0 right-0 w-[50px] h-[50px] bg-black rounded-full">
+                                <div className="fixed top-0 right-0 w-[50px] h-[50px]  bg-black rounded-full">
                                     <XCircleIcon className="text-lg text-white cursor-pointer"
                                     onClick={()=>{setFullSizeImage(false)}}/>
                                 </div>
                                 <div className="absolute top-[50%] left-[50%]
-                                translate-x-[-50%] translate-y-[-50%]
-                                w-[80%] h-[80%] overflow-hidden rounded-xl z-50">
+                                translate-x-[-50%] lg:translate-y-[-50%] translate-y-[-30%]
+                                lg:w-[80%] lg:h-[80%] h-[600px] w-[350px] overflow-hidden lg:rounded-xl z-50">
                                     <img 
                                     src={fullSizeImageUrl} 
                                     alt="full size" 
