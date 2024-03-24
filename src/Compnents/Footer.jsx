@@ -5,28 +5,24 @@ import { FaTiktok, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-1 lg:h-[200px] sm:h-[400px] max-sm:h-[400px]">
+    <footer className="bg-black text-white py-1">
       <div className="container mx-auto">
         <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div className="flex justify-center text-center sm:text-center mb-8"> 
+          <div className="flex justify-center text-center sm:text-center "> 
             <Link to="/" className="flex items-center">
               <img src={ReluLogo} alt="Relu Logo" className="w-12 h-12" />
               <span className="text-white ml-2 text-lg font-semibold font-quicksand">ReLU Art</span>
             </Link>
-            
           </div>
           <div className='flex justify-center'>
             <p className="mt-2 font-semibold romanesco-regular text-white">your Art , our Frame</p>
             <br />
-            
           </div>
           <div className='flex justify-center'>
             <Link to='/customOrder'>
               <p className="mt-2 font-semibold romanesco-regular text-white hover:text-gray-300">Create Your Own DESIGN From Here</p>
             </Link>
           </div>
-          
-          
           <div className="text-center sm:text-left">
             <h4 className="text-xl font-semibold mb-4 font-quicksand">Follow ReLU Art </h4>
             <div className="flex justify-center sm:justify-start  space-x-4">
@@ -47,7 +43,6 @@ export default function Footer() {
 
             </div>
             <p className='p-2'>علشان نكمل الرحلة سوا</p>
-
           </div>
         </div>
         <div className='flex justify-center items-center'>
